@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css">
+  <title></title>
+</head>
+
+<body>
+  <nav>
+    <h4>Register</h4>
+
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/auth/logout">Logout</a></li>
+
+    </ul>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="avatar-ctn">
+            <img src="/avatar.png" class="avatar" alt="user profile picture">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Welcome back {{user.name}}</h5>
+            <p class="card-text">text lalalalalalalalalalalalal</p>
+            <a href="#" class="btn-primary">{{user.email}}</a>
+          </div>
+        </div>
+
+        </div>
+      <div class="col-8">
+        <div class="card text-center">
+          <div class="card-header">
+            Profile Page
+
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Welcome back {{user.name}}</h5>
+            <p class="card-text">This is a profile page</p>
+            <a href="#" class="btn btn-primary">Go to da shop</a>
+          </div>
+          <div class="card-footer text-muted" >
+            Teamwork shopppp
+
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

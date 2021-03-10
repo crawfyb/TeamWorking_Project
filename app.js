@@ -26,7 +26,9 @@ const db = mysql.createConnection({
   user: process.env.database_user,
   password: process.env.database_password,
   database: process.env.database,
-});
+  socketPath : '/Applications/MAMP/tmp/mysql/mysql.sock'
+
+ });
 
 const publicDirectory = path.join(__dirname, './public')
 app.use(express.static(publicDirectory))
