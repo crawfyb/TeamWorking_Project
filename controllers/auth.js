@@ -12,7 +12,11 @@ const db = mysql.createConnection({
   password: process.env.database_password,
   database: process.env.database,
   socketPath : '/Applications/MAMP/tmp/mysql/mysql.sock'
+
 });
+
+
+
 
 //login for current customers function
 exports.login = async (req, res) => {
@@ -27,7 +31,7 @@ exports.login = async (req, res) => {
       })
     }
     db.query('SELECT * FROM customers WHERE username = ?', [username], async (error, results) => {
-      //console.log(results);
+    //  console.log(results);
       if (!results || !(await bcrypt.compare(password, results[0].password))) {
         res.status(401).render('login', {
           message: "Email or Password is incorrect"
@@ -68,7 +72,7 @@ exports.login = async (req, res) => {
 
 //register new customer function
 exports.register = (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   const {
     name,
@@ -94,7 +98,7 @@ exports.register = (req, res) => {
     }
 
     let hashedPassword = await bcrypt.hash(password, 8);
-    console.log(hashedPassword);
+  //  console.log(hashedPassword);
 
     db.query('INSERT INTO customers SET ?', {
       name: name,
@@ -105,7 +109,7 @@ exports.register = (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        console.log(results);
+      //  console.log(results);
         res.render('register', {
           message: 'User Registered'
         })

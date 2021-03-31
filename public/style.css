@@ -1,5 +1,6 @@
 body {
-  background-color: orange;
+  background-color: black;
+
 }
 
 nav {
@@ -39,4 +40,17 @@ nav li a:hover {
 .avatar-ctn {
 background-color: orange;
 text-align: center;
+}
+
+.cart ion-icon {
+  vertical-align: bottom;
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.cart a {
+  background-color: grey;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
 }
