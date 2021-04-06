@@ -33,12 +33,16 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/shop', (req, res) => {
+//router.get('/shop', async (req, res, next) => {
+  router.get('/shop', (req, res) => {
   db.query("SELECT * FROM product", function (err, results, fields) {
+    //req.product = results;
 
-    //res.render('shop');
-
-    res.send(fields);
+    res.render('shop', {
+      product: results
+    //res.send(req.product);
+    //res.send(results);
+});
 });
 });
 

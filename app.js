@@ -36,10 +36,6 @@ app.use(express.static(publicDirectory))
 app.set('view engine', 'hbs');
 
 
-
-
-
-
 //Check database connection
 db.connect((error) => {
   if (error) {
@@ -50,11 +46,6 @@ db.connect((error) => {
 })
 
 
-// db.query("SELECT * FROM product", function (err, result, fields) {
-//   if (err) throw err;
-//  console.log(result);
-//   //req.product = result;
-//    });
 
 //define routes
 app.use('/', require('./routes/pages'))

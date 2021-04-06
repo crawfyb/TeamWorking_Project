@@ -16,7 +16,12 @@ const db = mysql.createConnection({
 });
 
 
+exports.products = (req, res) => {
 
+  db.query("SELECT * FROM product", async (err, results, fields) => {
+    console.log(results);
+    req.user = results[0];
+})}
 
 //login for current customers function
 exports.login = async (req, res) => {
@@ -131,7 +136,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
         //check if the user still exists
         db.query('SELECT * FROM customers WHERE id = ?', [decoded.id], (error, result) => {
-        //  console.log(result);
+          console.log(result);
 
           if (!result) {
             return next();
