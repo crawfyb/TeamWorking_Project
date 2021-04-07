@@ -27,14 +27,166 @@
 
             Teamwork shopppp
 
-          </div>
-        </div>
 
-      </div>
+            <div class="products-container">
+              <div class="product-header">
+                <h5 class="product-title">Product</h5>
+                <h5 class="price">PRICE</h5>
+                <h5 class="quantity">Quantity</h5>
+                <h5 class="total">Total</h5>
+              </div>
+              <div class="products">
 
-  </div>
-  </div>
+              </div>
 
+            </div>
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    let carts = document.querySelectorAll('.add-cart');
+
+
+    let products = [
+      {{#each product}}
+      {
+        id: {{this.product_id}},
+        name: "{{this.name}}",
+        price: {{this.price}},
+        inCart: 0
+    },
+      {{/each}}
+
+    ];
+                   //console.log(products);
+    for (let i = 0; i < carts.length; i++) {
+      carts[i].addEventListener('click', () => {
+        cartNumbers(products[i]);
+        totalCost(products[i]);
+      })
+    }
+
+    function onLoadCartNumbers() {
+      let productNumbers = localStorage.getItem('cartNumbers');
+
+      if (productNumbers) {
+        document.querySelector('.cart span').textContent = productNumbers;
+      }
+    };
+
+    function cartNumbers(product) {
+     // console.log("The product clicked is", product);
+      let productNumbers = localStorage.getItem('cartNumbers');
+
+      productNumbers=parseInt(productNumbers);
+
+      if (productNumbers) {
+        localStorage.setItem('cartNumbers', productNumbers + 1);
+        document.querySelector('.cart span').textContent = productNumbers + 1;
+      } else {
+        localStorage.setItem('cartNumbers', 1);
+        document.querySelector('.cart span').textContent = 1;
+      }
+      setItems(product);
+    };
+
+    function setItems(product) {
+      let cartItems = localStorage.getItem('productsInCart');
+      cartItems = JSON.parse(cartItems);
+      console.log("asfafasf", cartItems);
+      // console.log('Inside of the items function');
+      // console.log("my product is ", product);
+      if (cartItems != null) {
+
+        if (cartItems[product.name] == undefined) {
+          cartItems = {
+            ...cartItems,
+            [product.name]: product
+          }
+
+        }
+        cartItems[product.name].inCart += 1;
+      }else {
+        product.inCart = 1;
+
+         cartItems = {
+          [product.name]:product
+        }
+      }
+
+      localStorage.setItem('productsInCart', JSON.stringify(cartItems))
+    }
+
+    function totalCost(product) {
+      //console.log("the product price is ", product.price);
+      let cartCost = localStorage.getItem('totalCost');
+     // cartCost = parseFloat(cartCost);
+
+      //console.log("my cart cost is", cartCost);
+    //console.log(typeof cartCost);
+
+      if (cartCost != null) {
+        cartCost = parseInt(cartCost);
+
+        localStorage.setItem('totalCost', cartCost + product.price)
+      }else {
+        localStorage.setItem('totalCost', product.price)
+
+      }
+
+
+    }
+
+    function displayCart() {
+      let cartItems = localStorage.getItem('productsInCart');
+      cartItems = JSON.parse(cartItems);
+
+      let productContainer = document.querySelector('.products');
+      let cartCost = localStorage.getItem('totalCost');
+
+
+      if (cartItems && productContainer) {
+        productContainer.innerHTML = '';
+        Object.values(cartItems).map(item => {
+          productContainer.innerHTML += `
+          <div class="product">
+              <ion-icon name="close-circle-outline"></ion-icon>
+               <img src="${item.id}.jpeg">
+              <span>${item.name}</span>
+              </div>
+              <div class="price">£${item.price}.00</div>
+              <div class="quantity">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+              <span>${item.inCart}</span>
+              <ion-icon name="add-circle-outline"></ion-icon>
+              </div>
+              <div class="total">
+              £${item.inCart * item.price}.00
+              </div>
+              </div>
+              `
+        })
+        productContainer.innerHTML += `
+          <div class="basketTotalContainer">
+          <h4 class="basketTotalTitle">
+          Basket Total
+          </h4>
+          <h4 class="basketTotal">
+            £${cartCost}.00
+          </h4>
+        `
+      }
+      }
+
+    onLoadCartNumbers();
+    displayCart();
+  </script>
 
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 

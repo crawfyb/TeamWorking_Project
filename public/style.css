@@ -3,6 +3,8 @@ body {
 
 }
 
+/* ------------------nav bar--------------------------------- */
+
 nav {
   background-color: blue;
   padding: 30px 60px;
@@ -32,6 +34,9 @@ nav li a:hover {
   text-decoration: none;
 }
 
+
+/* ----------------------avatar image--------------------------- */
+
 .avatar {
   width: 85%;
   border-bottom: 1px rgba(0, 0, 0, 0.125);
@@ -42,6 +47,8 @@ background-color: orange;
 text-align: center;
 }
 
+
+/* --------------------------cart icon------------------------------------ */
 .cart ion-icon {
   vertical-align: bottom;
   font-size: 20px;
@@ -55,7 +62,11 @@ text-align: center;
   text-decoration: none;
 }
 
- .container {
+
+/* --------------------------------shop------------------------------------- */
+
+ .container,
+ .products-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -80,11 +91,99 @@ text-align: center;
   text-align: center;
 }
 
-
-
 .image:hover .cart1{
   bottom: 50px;
   opacity: 1;
   padding: 10px;
   text-decoration: none;
-} 
+}
+
+/* ----------------------------------------cart-------------------------------- */
+
+
+.products-container {
+  max-width: 1500px;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.products-container ion-icon {
+  font-size: 25px;
+  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+
+}
+
+.product-header {
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 4px solid black;
+  margin: 0 auto;
+}
+
+.product-title {
+  /* border-bottom: 1px solid black; */
+
+  width: 45%;
+}
+
+.price {
+  width: 15%;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.quantity {
+  width: 30%;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.total {
+  width: 10%;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+
+.product {
+  width: 45%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+}
+
+.products {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product img {
+  width: 20%;
+}
+
+.basketTotalContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.basketTotalTitle {
+    width: 15%;
+}
+
+.basketTotal {
+  width: 10%;
+}
